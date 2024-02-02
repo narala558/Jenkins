@@ -40,7 +40,7 @@ metadata:
     "app.kubernetes.io/component": "{{ $.Values.controller.componentName }}"
     {{ template "jenkins.fullname" $root }}-jenkins-config: "true"
 data:
-  jenkins-casc.yaml: |-
+  jcasc-default-config.yaml: |-
     {{ .Files.Get "//var/jenkins_home/casc_configs/jenkins-casc.yaml" | nindent 4 }}
     # {{- include "jenkins.casc.defaults" . | nindent 4 }}
 {{- end}}

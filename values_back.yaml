@@ -45,13 +45,12 @@ controller:
   # This is ignored if enableRawHtmlMarkupFormatter is true
   markupFormatter: plainText
   customJenkinsLabels: 
-  # The default configuration uses this secret to configure an admin user
-  # If you don't need that user or use a different security realm then you can disable it
-  # adminSecret: true
+  adminSecret: true 
+
   hostNetworking: false
   # When enabling LDAP or another non-Jenkins identity source, the built-in admin account will no longer exist.
   # If you disable the non-Jenkins identity store and instead use the Jenkins internal one,
-  # you should revert controller.adminUser to your preferred admin user:
+  # you should revert controller.admin.username to your preferred admin user:
   admin:
     username: "admin"
     # password: <defaults to random>
@@ -252,14 +251,14 @@ controller:
   #   targetPort: 9010 (Optional: Use to explicitly set targetPort if different from port)
 
   # List of plugins to be install during Jenkins controller start
-  installPlugins: []
-   # - kubernetes:4029.v5712230ccb_f8
-   # - workflow-aggregator:596.v8c21c963d92d
-   # - git:5.1.0
-   # - configuration-as-code:1670.v564dc8b_982d0
+  installPlugins:
+    - kubernetes:4186.v1d804571d5d4
+    - workflow-aggregator:596.v8c21c963d92d
+    - git:5.2.1
+    - configuration-as-code:1775.v810dc950b_514
 
   # Set to false to download the minimum required version of all dependencies.
-  installLatestPlugins: false
+  installLatestPlugins: true
 
   # Set to true to download latest dependencies of any plugin that is requested to have the latest version.
   installLatestSpecifiedPlugins: false
@@ -273,10 +272,10 @@ controller:
   initializeOnce: false
 
   # Enable to always override the installed plugins with the values of 'controller.installPlugins' on upgrade or redeployment.
-  overwritePlugins: false
+  # overwritePlugins: true
 
   # Configures if plugins bundled with `controller.image` should be overwritten with the values of 'controller.installPlugins' on upgrade or redeployment.
-  overwritePluginsFromImage: false
+  overwritePluginsFromImage: true
 
   # Configures the restrictions for naming projects. Set this key to null or empty to skip it in the default config.
   projectNamingStrategy: standard
@@ -289,8 +288,8 @@ controller:
   #  - "method groovy.json.JsonSlurperClassic parseText java.lang.String"
   #  - "new groovy.json.JsonSlurperClassic"
   # List of groovy init scripts to be executed during Jenkins controller start
-  initScripts: []
-  #  - |
+  initScripts: {}
+  #  test: |-
   #    print 'adding global pipeline libraries, register properties, bootstrap jobs...'
 
   # 'name' is a name of an existing secret in same namespace as jenkins,

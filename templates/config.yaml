@@ -58,7 +58,7 @@ data:
   {{- if not .Values.controller.sidecars.configAutoReload.enabled }}
 # Only add config to this script if we aren't auto-reloading otherwise the pod will restart upon each config change:
 {{- if .Values.controller.JCasC.defaultConfig }}
-   jenkins-casc.yaml: |-
+   jcasc-default-config.yaml: |-
     {{- include "jenkins.casc.defaults" . |nindent 4}}
 {{- end }}
 {{- range $key, $val := .Values.controller.JCasC.configScripts }}
