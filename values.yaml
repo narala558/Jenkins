@@ -1001,19 +1001,19 @@ persistence:
   dataSource:
   #   name: PVC-NAME
   #   kind: PersistentVolumeClaim
-  volumes:
-  - name: jenkins-casc-volume
-    secret:
-      secretName: jenkins-casc
+  volumes: []
+  # - name: jenkins-casc-volume
+  #   secret:
+  #     secretName: jenkins-casc
   #  - name: nothing
   #    emptyDir: {}
-  mounts:
+  mounts: []
   #  - mountPath: /var/nothing
   #    name: nothing
   #    readOnly: true
-  - name: jenkins-casc-volume
-    defaultMode: "700"
-    mountPath: /var/jenkins_home/casc_configs/
+  # - name: jenkins-casc-volume
+  #   defaultMode: "700"
+  #   mountPath: /var/jenkins_home/casc_configs/
  
 
 networkPolicy:
