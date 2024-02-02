@@ -53,7 +53,6 @@ controller:
   admin:
     username: "admin"
     # password: <defaults to random>
-
     userKey: jenkins-admin-user
     passwordKey: jenkins-admin-password
 
@@ -1001,19 +1000,19 @@ persistence:
   dataSource:
   #   name: PVC-NAME
   #   kind: PersistentVolumeClaim
-  volumes: []
-  # - name: jenkins-casc-volume
-  #   secret:
-  #     secretName: jenkins-casc
+  volumes: 
+  - name: jenkins-casc-volume
+    secret:
+      secretName: jenkins-casc
   #  - name: nothing
   #    emptyDir: {}
-  mounts: []
-  #  - mountPath: /var/nothing
-  #    name: nothing
-  #    readOnly: true
-  # - name: jenkins-casc-volume
-  #   defaultMode: "700"
-  #   mountPath: /var/jenkins_home/casc_configs/
+  mounts: 
+  # #  - mountPath: /var/nothing
+  # #    name: nothing
+  # #    readOnly: true
+  - name: jenkins-casc-volume
+    mountPath: /var/jenkins_home/casc_configs/jenkins_casc.yaml
+    subPath: jenkins_casc.yaml
  
 
 networkPolicy:
